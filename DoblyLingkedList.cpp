@@ -133,8 +133,71 @@ public:
         }
         
     }
+
+    void revtraverse()
+    {
+        if (START == NULL)
+        {
+            cout << "\nList is empty" << endl;
+            return;
+        }
+
+        //step 1: Move to the last node
+        Node *currentNode = START;
+        int i = 0;
+        while (currentNode->next !=NULL)
+        {
+            currentNode = currentNode->next;
+            i++;
+        }
+
+        //step 2: Traverse backward
+        cout << "\nRecords in descending order of roll number are: \n";
+        while (currentNode != NULL)
+        {
+            cout << i + 1 << ". " << currentNode->noMhs << " " << endl;
+
+            //step 3: Move to previous node
+            currentNode = currentNode->prev;
+            i--;
+        }
+    }
+
+    void searchData()
+    {
+        if (START == NULL)
+        {
+            cout << "\nList is empty" << endl;
+            return;
+        }
+
+        int rollNo;
+        cout << "\nEnter the roll number to search: ";
+        cin >> rollNo;
+
+        Node *current = START;
+
+        //step 1: traverse to find maching roll number
+        while (current != NULL && current->noMhs != rollNo)
+             current = current->next;
+
+        //step 2: Output result
+        if (current == NULL)
+        {
+            cout << "Record not found\n";
+        }
+        else
+        {
+            cout << "Record found\n";
+            cout << "Roll number: " << current->noMhs << endl;
+        }
+        
+    } 
 };
 
-int main (){
-    
+int main ()
+{
+    DoubleLinkedList list;
+    char choice;
 }
+    
